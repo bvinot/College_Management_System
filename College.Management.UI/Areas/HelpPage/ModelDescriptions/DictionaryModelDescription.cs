@@ -1,0 +1,6 @@
+namespace College.Management.UI.Areas.HelpPage.ModelDescriptions
+{
+    public class DictionaryModelDescription : KeyValuePairModelDescription
+    {
+    }
+}
