@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "College.Management.Entites"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "College.Management.UI", "College.Management.UI\College.Management.UI.csproj", "{B9B9EB38-5076-42EA-996A-385A417F9853}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "College.Management.DataProviders", "College.Management.Infra\College.Management.DataProviders.csproj", "{7E35F67D-9B33-4218-8B5E-1709D077A89B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B9B9EB38-5076-42EA-996A-385A417F9853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9B9EB38-5076-42EA-996A-385A417F9853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9B9EB38-5076-42EA-996A-385A417F9853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E35F67D-9B33-4218-8B5E-1709D077A89B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E35F67D-9B33-4218-8B5E-1709D077A89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E35F67D-9B33-4218-8B5E-1709D077A89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E35F67D-9B33-4218-8B5E-1709D077A89B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

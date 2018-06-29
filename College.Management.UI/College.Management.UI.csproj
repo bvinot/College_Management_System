@@ -243,6 +243,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,6 +277,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\College.Management.Entites\College.Management.Entites.csproj">
+      <Project>{2cac722c-f9e4-49ee-b438-b962b751a34a}</Project>
+      <Name>College.Management.Entites</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\College.Management.Infra\College.Management.DataProviders.csproj">
+      <Project>{7e35f67d-9b33-4218-8b5e-1709d077a89b}</Project>
+      <Name>College.Management.DataProviders</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
