@@ -16,5 +16,7 @@ namespace College.Management.Entities.Interfaces
         StaffCategory StaffCategory { get; set; }
 
         StaffType StaffType { get; set; }
+
+        bool IsAdmin { get; set; }
     }
 }

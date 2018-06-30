@@ -10,8 +10,8 @@ namespace College.Management.Entities.Models
 {
     public class Course
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int CourseId { get; set; }
 
         public string Name { get; set; }

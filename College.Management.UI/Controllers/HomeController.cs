@@ -1,4 +1,5 @@
 ﻿using College.Management.DataProviders;
+using College.Management.Entites;
 using College.Management.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace College.Management.UI.Controllers
 
         public ActionResult Login()
         {
-            CollegeDbContext context = new CollegeDbContext();
+           
 
             ViewBag.Title = "Home Page";
 
@@ -28,6 +29,11 @@ namespace College.Management.UI.Controllers
 
         [HttpPost]
         public ActionResult UserLogin(User user)
+        {
+            return View();
+        }
+
+        public ActionResult Registration()
         {
             return View();
         }

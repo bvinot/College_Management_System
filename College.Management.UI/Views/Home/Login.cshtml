@@ -12,13 +12,22 @@
         <br />
 
         @Html.LabelFor(x => x.Password)
-        @Html.PasswordFor(x => x.Password,  new { @class = "form-control" } )
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+        @*<div class="mb-3">
+                <label>
+                    @Html.ActionLink("Sign Up", "Register", new { @class = "form-control" })
+                </label>
+            </div>*@
+
+
+        <span >
+            Don’t have an account?  &nbsp; <a href="/Home/Registration" class="alert-link">Register </a>
+        </span>
+
+        <br />
+        <br/>
+        <button class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
     </form>
 </div>

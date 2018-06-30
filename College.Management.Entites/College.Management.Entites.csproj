@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -41,16 +47,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\StaffList.cs" />
-    <Compile Include="Models\Course.cs" />
+    <Compile Include="CollegeRepository.cs" />
+    <Compile Include="DataTransferObjects\StaffDto.cs" />
+    <Compile Include="DataTransferObjects\StudentDto.cs" />
+    <Compile Include="DataTransferObjects\UserDto.cs" />
+    <Compile Include="DBContext\CollegeDbContext.cs" />
+    <Compile Include="DBContext\CollegeInitializer.cs" />
+    <Compile Include="DBEntities\StaffList.cs" />
+    <Compile Include="DBEntities\Course.cs" />
     <Compile Include="Enumerations\Enumerations.cs" />
     <Compile Include="Interfaces\IStaff.cs" />
-    <Compile Include="Interfaces\IStudent.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="DBEntities\Student.cs" />
+    <Compile Include="DBEntities\StudentMarksMapping.cs" />
+    <Compile Include="DBEntities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Staff.cs" />
-    <Compile Include="Models\Subject.cs" />
+    <Compile Include="DBEntities\Staff.cs" />
+    <Compile Include="DBEntities\Subject.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

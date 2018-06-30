@@ -13,9 +13,9 @@ namespace College.Management.Entities.Models
         public Admin()
         {
             StaffType = StaffType.Administration;
-        }
 
-        public bool IsAdmin { get { return true; } }
+            IsAdmin = true;
+        }
     }
 
     public class Lecturer : Staff

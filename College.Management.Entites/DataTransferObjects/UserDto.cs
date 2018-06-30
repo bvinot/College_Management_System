@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace College.Management.Entities
 {
-    public class User
+    public class UserDto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         public string FirstName { get; set; }
 
