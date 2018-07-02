@@ -23,9 +23,11 @@ namespace College.Management.UI.Controllers
         [HttpPost]
         public ActionResult UserLogin(UserDto user)
         {
-            CollegeRepository.Instance.Login(user);
+            var authenticatedUser  = CollegeRepository.Instance.Login(user);
 
-            return View();
+            Session["AuthUser"] = authenticatedUser;
+
+            return View("Index");
         }
 
         public ActionResult Registration()

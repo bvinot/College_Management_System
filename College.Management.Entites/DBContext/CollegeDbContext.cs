@@ -16,11 +16,10 @@ namespace College.Management.DataProviders
     {
 
         //public CollegeDbContext() : base("Data Source=WKWIN5154312;Initial Catalog=CollegeDB;Integrated Security=True;Encrypt=False;TrustServerCertificate=False")
-        public CollegeDbContext() : base("DB")
+        public CollegeDbContext() : base(Environment.UserName == "brevinot" ? "Office_DB" : "Home_DB")
         {
             try
             {
-
                 Database.SetInitializer(new DropCreateDatabaseAlways<CollegeDbContext>());
                 Database.SetInitializer(new CreateDatabaseIfNotExists<CollegeDbContext>());
                 Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CollegeDbContext>());

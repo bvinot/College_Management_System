@@ -1,4 +1,5 @@
-﻿using College.Management.DataProviders;
+﻿using AutoMapper;
+using College.Management.DataProviders;
 using College.Management.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace College.Management.Entites
 
         private CollegeRepository()
         {
+            Mapper.Initialize(x => x.CreateMap<User, UserDto>());
+
             context = new CollegeDbContext();
         }
 
@@ -33,9 +36,17 @@ namespace College.Management.Entites
 
         public UserDto Login(UserDto user)
         {
-           var lUser =  context.Users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
+            var lUser = context.Users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
 
-            return null;
+            var dtoUser = Mapper.Map<User, UserDto>(lUser);
+
+            var userRoles = from roles in context.UserRoles
+                            join urMapping in context.UserRoleMapping on roles.RoleId equals urMapping.RoleId
+                            select roles;
+
+            dtoUser.UserRoles = userRoles.ToList();
+
+            return dtoUser;
         }
 
         public int RegisterUser(UserDto user)
@@ -49,9 +60,10 @@ namespace College.Management.Entites
                 PhoneNumber = user.PhoneNumber,
                 IsActive = true
             };
+
             context.Users.Add(u);
 
-            var result  = context.SaveChanges();
+            var result = context.SaveChanges();
 
             return result;
         }

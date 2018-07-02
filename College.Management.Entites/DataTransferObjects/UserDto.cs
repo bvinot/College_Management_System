@@ -1,4 +1,5 @@
-﻿using System;
+﻿using College.Management.Entites.DBEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -26,12 +27,13 @@ namespace College.Management.Entities
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Password Required")]
-        [Compare("Password", ErrorMessage ="Password does not Match")]
+        [Compare("Password", ErrorMessage = "Password does not Match")]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Phone Number Required")]
         public long PhoneNumber { get; set; }
 
+        public List<UserRole> UserRoles { get; set; }
 
         public bool IsActive { get; set; }
     }

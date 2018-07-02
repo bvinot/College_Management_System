@@ -25,7 +25,5 @@ namespace College.Management.Entities
         public long PhoneNumber { get; set; }
 
         public bool IsActive { get; set; }
-
-        public virtual ICollection<UserRole> Roles { get; set; }
     }
 }
