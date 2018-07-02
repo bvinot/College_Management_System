@@ -11,31 +11,39 @@ namespace College.Management.UI.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewBag.Title = "Home Page";
-
-            return View();
-        }
 
         public ActionResult Login()
         {
-           
 
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Login";
 
-            return View(new User());
+            return View(new UserDto());
         }
 
         [HttpPost]
-        public ActionResult UserLogin(User user)
+        public ActionResult UserLogin(UserDto user)
         {
+            CollegeRepository.Instance.Login(user);
+
             return View();
         }
 
         public ActionResult Registration()
         {
+           Session["Roles"] = CollegeRepository.Instance.GetUserRoles();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult UserRegistration(UserDto user)
+        {
+            if (ModelState.IsValid)
+            {
+               Session["Success"] = CollegeRepository.Instance.RegisterUser(user) == 1 ? true : false;
+
+            }
+
+            return RedirectToAction("Registration");
         }
     }
 }

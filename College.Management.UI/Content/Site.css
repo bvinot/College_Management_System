@@ -16,10 +16,6 @@ textarea {
     max-width: 280px;
 }
 
-.navbar-inverse {
-    background-color: darkslategray !important;
-}
-
 
 html,
 body {
@@ -32,7 +28,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
     padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     background-color: #f5f5f5;
 }
 
@@ -52,7 +48,7 @@ body {
         box-sizing: border-box;
         height: auto;
         padding: 10px;
-        font-size: 16px;
+        font-size: 10px;
     }
 
         .form-signin .form-control:focus {
@@ -70,3 +66,18 @@ body {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
+
+.form-horizontal {
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+}
+
+.bg-firebrick {
+    background-color: firebrick !important;
+    color: cornsilk;
+}
+
+.bg-slategrey {
+    background-color: darkslategray !important;
+    color:honeydew !important;
+}

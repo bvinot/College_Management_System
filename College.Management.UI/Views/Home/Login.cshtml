@@ -1,4 +1,4 @@
-﻿@model College.Management.Entities.User
+﻿@model College.Management.Entities.UserDto
 <div>
     <form class="form-signin" action="/Home/UserLogin" method="post">
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
@@ -22,12 +22,12 @@
             </div>*@
 
 
-        <span >
-            Don’t have an account?  &nbsp; <a href="/Home/Registration" class="alert-link">Register </a>
-        </span>
+        @*<span >
+                Don’t have an account?  &nbsp; <a href="/Home/Registration" class="alert-link">Register </a>
+            </span>*@
 
         <br />
-        <br/>
+        <br />
         <button class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
     </form>
 </div>

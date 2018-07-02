@@ -1,4 +1,5 @@
-﻿using System;
+﻿using College.Management.Entites.DBEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,5 +25,7 @@ namespace College.Management.Entities
         public long PhoneNumber { get; set; }
 
         public bool IsActive { get; set; }
+
+        public virtual ICollection<UserRole> Roles { get; set; }
     }
 }

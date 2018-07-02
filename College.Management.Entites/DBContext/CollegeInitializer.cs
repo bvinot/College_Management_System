@@ -1,4 +1,6 @@
 ﻿using College.Management.DataProviders;
+using College.Management.Entites.DBEntities;
+using College.Management.Entities.Enumerations;
 using College.Management.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace College.Management.DataProviders
 {
-    public class CollegeInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
+    public class CourseInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
     {
         protected override void Seed(CollegeDbContext context)
         {
@@ -39,6 +41,24 @@ namespace College.Management.DataProviders
             context.Courses.AddRange(courses);
 
             context.Subjects.AddRange(subjects);
+
+            base.Seed(context);
+        }
+    }
+
+    public class UserRolesInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
+    {
+        protected override void Seed(CollegeDbContext context)
+        {
+            var roles = new List<UserRole>
+            {
+              new UserRole{Role = "Admin", Previleges=$"{Operations.Admin},{Operations.Courses},{Operations.Staffs},{Operations.Students}"},
+              new UserRole{Role = "IT", Previleges=$"{Operations.Admin},{Operations.Staffs},{Operations.Students}"},
+              new UserRole{Role = "Helpdesk", Previleges=$"{Operations.Staffs}"},
+              new UserRole{Role = "Student", Previleges=$"{Operations.Students}"}
+            };
+
+            context.UserRoles.AddRange(roles);
 
             base.Seed(context);
         }

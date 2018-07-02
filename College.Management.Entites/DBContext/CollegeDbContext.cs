@@ -1,4 +1,5 @@
 ﻿using College.Management.Entites;
+using College.Management.Entites.DBEntities;
 using College.Management.Entites.Models;
 using College.Management.Entities;
 using College.Management.Entities.Models;
@@ -23,7 +24,8 @@ namespace College.Management.DataProviders
                 Database.SetInitializer(new DropCreateDatabaseAlways<CollegeDbContext>());
                 Database.SetInitializer(new CreateDatabaseIfNotExists<CollegeDbContext>());
                 Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CollegeDbContext>());
-                Database.SetInitializer(new CollegeInitializer());
+                Database.SetInitializer(new CourseInitializer());
+                Database.SetInitializer(new UserRolesInitializer());
 
                 Database.Initialize(true);
             }
@@ -46,26 +48,8 @@ namespace College.Management.DataProviders
 
         public DbSet<StudentMarksMapping> StudentSubjectMarksMapping { get; set; }
 
-        // protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<StudentMarksMapping>()
-        //.HasKey(bc => new { bc.UserId, bc.SubjectId });
+        public DbSet<UserRole> UserRoles { get; set; }
 
-        //     modelBuilder.Entity<StudentMarksMapping>()
-        //         .HasRequired(bc => bc)
-        //         .WithMany(b => b.SubjectId)
-        //         .HasForeignKey(bc => bc.BookId);
-
-        //     modelBuilder.Entity<StudentMarksMapping>()
-        //         .HasOne(bc => bc.Category)
-        //         .WithMany(c => c.BookCategories)
-        //         .HasForeignKey(bc => bc.CategoryId);
-        // }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<StudentMarksMapping>().HasKey(x => new { x.UserId, x.SubjectId });
-        //}
-
+        public DbSet<UserRoleMapping> UserRoleMapping { get; set; }
     }
 }
