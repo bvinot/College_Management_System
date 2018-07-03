@@ -1,5 +1,6 @@
 ﻿using College.Management.DataProviders;
 using College.Management.Entites.DBEntities;
+using College.Management.Entities;
 using College.Management.Entities.Enumerations;
 using College.Management.Entities.Models;
 using System;
@@ -46,19 +47,27 @@ namespace College.Management.DataProviders
         }
     }
 
-    public class UserRolesInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
+    public class UserInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
     {
         protected override void Seed(CollegeDbContext context)
         {
+            var user = new User { UserId = 1, FirstName = "Breme", LastName = "Vinoth", Email = "bremevinoth@gmail.com", Password = "12345", PhoneNumber = 8050683885, IsActive = true };
+
             var roles = new List<UserRole>
             {
-              new UserRole{Role = "Admin", Previleges=$"{Operations.Admin},{Operations.Courses},{Operations.Staffs},{Operations.Students}"},
-              new UserRole{Role = "IT", Previleges=$"{Operations.Admin},{Operations.Staffs},{Operations.Students}"},
-              new UserRole{Role = "Helpdesk", Previleges=$"{Operations.Staffs}"},
-              new UserRole{Role = "Student", Previleges=$"{Operations.Students}"}
+              new UserRole{RoleId =1, Role = "Admin", Previleges=$"{Operations.Admin},{Operations.Courses},{Operations.Staffs},{Operations.Students}"},
+              new UserRole{RoleId=2, Role = "IT", Previleges=$"{Operations.Admin},{Operations.Staffs},{Operations.Students}"},
+              new UserRole{RoleId=3, Role = "Helpdesk", Previleges=$"{Operations.Staffs}"},
+              new UserRole{RoleId =4 ,Role = "Student", Previleges=$"{Operations.Students}"}
             };
 
+            var mapping = new UserRoleMapping { MappingId = 1, RoleId = 1, UserId = 1 };
+
+            context.Users.Add(user);
+     
             context.UserRoles.AddRange(roles);
+
+            context.UserRoleMapping.Add(mapping);
 
             base.Seed(context);
         }

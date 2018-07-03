@@ -35,6 +35,8 @@ namespace College.Management.Entities
 
         public List<UserRole> UserRoles { get; set; }
 
+        public List<string> Previleges { get; set; }
+
         public bool IsActive { get; set; }
     }
 }

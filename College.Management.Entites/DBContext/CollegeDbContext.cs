@@ -24,7 +24,7 @@ namespace College.Management.DataProviders
                 Database.SetInitializer(new CreateDatabaseIfNotExists<CollegeDbContext>());
                 Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CollegeDbContext>());
                 Database.SetInitializer(new CourseInitializer());
-                Database.SetInitializer(new UserRolesInitializer());
+                Database.SetInitializer(new UserInitializer());
 
                 Database.Initialize(true);
             }

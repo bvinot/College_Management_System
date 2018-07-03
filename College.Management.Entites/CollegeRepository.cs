@@ -46,6 +46,10 @@ namespace College.Management.Entites
 
             dtoUser.UserRoles = userRoles.ToList();
 
+            var prev = string.Join(",",dtoUser?.UserRoles?.Select(x => x.Previleges)).Split(',').Distinct().ToList();
+
+            dtoUser.Previleges = prev;
+
             return dtoUser;
         }
 
