@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using College.Management.DataProviders;
+using College.Management.Entites.DBEntities;
 using College.Management.Entities;
+using College.Management.Entities.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,22 +40,28 @@ namespace College.Management.Entites
         {
             var lUser = context.Users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
 
+            if (lUser == null)
+                return null;
+
             var dtoUser = Mapper.Map<User, UserDto>(lUser);
 
             var userRoles = from roles in context.UserRoles
                             join urMapping in context.UserRoleMapping on roles.RoleId equals urMapping.RoleId
                             select roles;
 
-            dtoUser.UserRoles = userRoles.ToList();
 
-            var prev = string.Join(",",dtoUser?.UserRoles?.Select(x => x.Previleges)).Split(',').Distinct().ToList();
+            dtoUser.UserRoles = userRoles?.ToList();
+
+            var prev = string.Join(",", dtoUser?.UserRoles?.Select(x => x.Previleges))?.Split(',')?.Distinct()?.ToList();
 
             dtoUser.Previleges = prev;
+
+            SaveAudit(dtoUser.UserId, string.Empty, AuditAction.Login);
 
             return dtoUser;
         }
 
-        public int RegisterUser(UserDto user)
+        public int RegisterUser(UserDto user, int requestedBy)
         {
             var u = new User
             {
@@ -67,9 +75,17 @@ namespace College.Management.Entites
 
             context.Users.Add(u);
 
-            var result = context.SaveChanges();
+            var result = SaveAudit(requestedBy, u.FirstName + " " + u.LastName, AuditAction.AddedUser);
+
 
             return result;
+        }
+
+        public int SaveAudit(int userId, string desc, AuditAction action)
+        {
+            context.Audit.Add(new Audit { AuditTime = DateTime.Now, Action = $"{action.ToString()}:{desc}", UserId = userId });
+
+            return context.SaveChanges();
         }
     }
 }

@@ -33,4 +33,13 @@ namespace College.Management.Entities.Enumerations
         Students,
         Staffs
     }
+
+    public enum AuditAction
+    {
+        Login,
+        Logout,
+        AddedUser,
+        CheckedResult,
+        Other
+    }
 }

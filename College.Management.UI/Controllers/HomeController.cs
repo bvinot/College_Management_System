@@ -11,7 +11,6 @@ namespace College.Management.UI.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Login()
         {
 
@@ -23,16 +22,27 @@ namespace College.Management.UI.Controllers
         [HttpPost]
         public ActionResult UserLogin(UserDto user)
         {
-            var authenticatedUser  = CollegeRepository.Instance.Login(user);
+            var authenticatedUser = CollegeRepository.Instance.Login(user);
 
-            Session["AuthUser"] = authenticatedUser;
+            if (authenticatedUser != null)
+            {
+                ViewBag.LoginError = null;
 
-            return View("Index");
+                Session["AuthUser"] = authenticatedUser;
+
+                return View("Index");
+            }
+            else
+            {
+                ViewBag.LoginError = "Username or Password doesnt match.";
+
+                return View("Login");
+            }
         }
 
         public ActionResult Registration()
         {
-           Session["Roles"] = CollegeRepository.Instance.GetUserRoles();
+            Session["Roles"] = CollegeRepository.Instance.GetUserRoles();
             return View();
         }
 
@@ -41,8 +51,7 @@ namespace College.Management.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-               Session["Success"] = CollegeRepository.Instance.RegisterUser(user) == 1 ? true : false;
-
+                Session["Success"] = CollegeRepository.Instance.RegisterUser(user, (Session["AuthUser"] as UserDto).UserId) == 0 ? false : true;
             }
 
             return RedirectToAction("Registration");

@@ -2,6 +2,7 @@
 using College.Management.Entites.DBEntities;
 using College.Management.Entites.Models;
 using College.Management.Entities;
+using College.Management.Entities.Enumerations;
 using College.Management.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,11 @@ namespace College.Management.DataProviders
 
         public DbSet<UserRole> UserRoles { get; set; }
 
+        public DbSet<Audit> Audit { get; set; }
+
         public DbSet<UserRoleMapping> UserRoleMapping { get; set; }
+
+
+        
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="DataTransferObjects\UserDto.cs" />
     <Compile Include="DBContext\CollegeDbContext.cs" />
     <Compile Include="DBContext\CollegeInitializer.cs" />
+    <Compile Include="DBEntities\Audit.cs" />
     <Compile Include="DBEntities\StaffList.cs" />
     <Compile Include="DBEntities\Course.cs" />
     <Compile Include="DBEntities\UserRole.cs" />
