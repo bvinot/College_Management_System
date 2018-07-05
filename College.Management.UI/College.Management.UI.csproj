@@ -299,6 +299,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Audit.cshtml" />
+    <Content Include="Views\Home\Courses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

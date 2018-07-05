@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="@(authUser!=null && authUser.Previleges.Contains(Operations.Courses.ToString())? "nav-link" : "nav-link disabled")" href="#">Courses</a>
+                        <a class="@(authUser!=null && authUser.Previleges.Contains(Operations.Courses.ToString())? "nav-link" : "nav-link disabled")" href="/Home/Courses">Courses</a>
                     </li>
                     <li class="nav-item ">
                         <a class="@(authUser!=null && authUser.Previleges.Contains(Operations.Students.ToString())? "nav-link" : "nav-link disabled")" href="#">Students</a>
@@ -75,7 +75,7 @@
 
                         </a>
                         <div class="dropdown-menu ">
-                            <a class="dropdown-item" href="#">Audit</a>
+                            <a class="dropdown-item" href="/Home/Audit">Audit</a>
                             <a class="dropdown-item" href="#">Settings</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Sign Out</a>
@@ -86,9 +86,9 @@
         </nav>
         <div class="container body-content">
             @RenderBody()
-            <hr />
+           @* <hr />*@
             <footer class="fixed-bottom bg-secondary text-white-50">
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                <p>&copy; @DateTime.Now.Year - Breme Vinoth</p>
             </footer>
         </div>
     }

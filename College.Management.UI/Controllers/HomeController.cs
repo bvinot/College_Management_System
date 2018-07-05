@@ -56,5 +56,19 @@ namespace College.Management.UI.Controllers
 
             return RedirectToAction("Registration");
         }
+
+        public ActionResult Audit()
+        {
+            var audits = CollegeRepository.Instance.GetAuditDetails((Session["AuthUser"] as UserDto).UserId);
+
+            return View(audits);
+        }
+
+        public ActionResult Courses()
+        {
+            var courses = CollegeRepository.Instance.GetAllCourses();
+
+            return View(courses);
+        }
     }
 }

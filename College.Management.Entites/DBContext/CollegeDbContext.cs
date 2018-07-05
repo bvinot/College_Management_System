@@ -21,11 +21,10 @@ namespace College.Management.DataProviders
         {
             try
             {
-                Database.SetInitializer(new DropCreateDatabaseAlways<CollegeDbContext>());
+               // Database.SetInitializer(new DropCreateDatabaseAlways<CollegeDbContext>());
                 Database.SetInitializer(new CreateDatabaseIfNotExists<CollegeDbContext>());
                 Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CollegeDbContext>());
-                Database.SetInitializer(new CourseInitializer());
-                Database.SetInitializer(new UserInitializer());
+                Database.SetInitializer(new CollegeInitializer());
 
                 Database.Initialize(true);
             }

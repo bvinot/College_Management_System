@@ -1,0 +1,31 @@
+﻿@model IEnumerable<College.Management.Entities.DataTransferObjects.CourseDto>
+
+<div class="d-flex justify-content-between pb-2"><h4>Available Courses</h4> &nbsp;&nbsp; @Html.ActionLink("Add New", "AddCourse", "Home", new { @class = "btn btn-info" })</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @*@{ 
+                foreach (var item1 in item.Subjects)
+                {
+                    <td>&nbsp; &nbsp;item1</td>
+                }
+            }*@
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+            </td>
+        </tr>
+    }
+
+</table>

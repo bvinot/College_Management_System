@@ -1,0 +1,36 @@
+﻿@model IEnumerable<College.Management.Entites.DBEntities.Audit>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AuditTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>*@
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuditTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Action)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>*@
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AuditId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AuditId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AuditId })
+        </td>*@
+    </tr>
+}
+
+</table>

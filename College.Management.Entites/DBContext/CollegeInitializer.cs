@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace College.Management.DataProviders
 {
-    public class CourseInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
+
+    public class CollegeInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
     {
         protected override void Seed(CollegeDbContext context)
         {
@@ -43,14 +44,6 @@ namespace College.Management.DataProviders
 
             context.Subjects.AddRange(subjects);
 
-            base.Seed(context);
-        }
-    }
-
-    public class UserInitializer : DropCreateDatabaseIfModelChanges<CollegeDbContext>
-    {
-        protected override void Seed(CollegeDbContext context)
-        {
             var user = new User { UserId = 1, FirstName = "Breme", LastName = "Vinoth", Email = "bremevinoth@gmail.com", Password = "12345", PhoneNumber = 8050683885, IsActive = true };
 
             var roles = new List<UserRole>

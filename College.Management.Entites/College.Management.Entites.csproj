@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollegeRepository.cs" />
+    <Compile Include="DataTransferObjects\CourseDto.cs" />
     <Compile Include="DataTransferObjects\StaffDto.cs" />
     <Compile Include="DataTransferObjects\StudentDto.cs" />
     <Compile Include="DataTransferObjects\UserDto.cs" />

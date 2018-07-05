@@ -2,7 +2,9 @@
 using College.Management.DataProviders;
 using College.Management.Entites.DBEntities;
 using College.Management.Entities;
+using College.Management.Entities.DataTransferObjects;
 using College.Management.Entities.Enumerations;
+using College.Management.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,8 @@ namespace College.Management.Entites
         private CollegeRepository()
         {
             Mapper.Initialize(x => x.CreateMap<User, UserDto>());
+
+            Mapper.Initialize(x => x.CreateMap<Course, CourseDto>());
 
             context = new CollegeDbContext();
         }
@@ -56,7 +60,7 @@ namespace College.Management.Entites
 
             dtoUser.Previleges = prev;
 
-            SaveAudit(dtoUser.UserId, string.Empty, AuditAction.Login);
+            SaveAudit(dtoUser.UserId, $"by {dtoUser.Email}", AuditAction.Login);
 
             return dtoUser;
         }
@@ -77,15 +81,41 @@ namespace College.Management.Entites
 
             var result = SaveAudit(requestedBy, u.FirstName + " " + u.LastName, AuditAction.AddedUser);
 
-
             return result;
         }
 
         public int SaveAudit(int userId, string desc, AuditAction action)
         {
-            context.Audit.Add(new Audit { AuditTime = DateTime.Now, Action = $"{action.ToString()}:{desc}", UserId = userId });
+            context.Audit.Add(new Audit { AuditTime = DateTime.Now, Action = $"{action.ToString()} : {desc}", UserId = userId });
 
             return context.SaveChanges();
+        }
+
+        public List<Audit> GetAuditDetails(int userId)
+        {
+            return context.Audit.Where(x => x.UserId == userId).OrderByDescending(x => x.AuditId).ToList();
+
+        }
+
+        public List<CourseDto> GetAllCourses()
+        {
+            var courses = context.Courses.Select(x => Mapper.Map<CourseDto>(x)).ToList();
+
+            var subjects = context.Subjects;
+
+            if (courses.Any())
+            {
+                courses.ToList().ForEach(c =>
+                {
+
+                    var subjectList = subjects.Where(s => s.RelatedCourseId == c.CourseId).Select(x => x.Name).ToList();
+
+                    c.Subjects = subjectList;
+                });
+
+            }
+
+            return courses;
         }
     }
 }
