@@ -16,16 +16,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            @*@{ 
-                foreach (var item1 in item.Subjects)
-                {
-                    <td>&nbsp; &nbsp;item1</td>
-                }
-            }*@
             <td>
                 @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
             </td>
         </tr>
-    }
 
+        foreach (var item1 in item.Subjects)
+        {
+            <tr colspan="3" style="column-span:all">
+                <td><i>&nbsp; &nbsp;@item1</i></td>
+            </tr>
+        }
+    }
 </table>

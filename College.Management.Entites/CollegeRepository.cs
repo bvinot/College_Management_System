@@ -23,9 +23,11 @@ namespace College.Management.Entites
 
         private CollegeRepository()
         {
-            Mapper.Initialize(x => x.CreateMap<User, UserDto>());
+            Mapper.Initialize(x => {
+                x.CreateMap<User, UserDto>();
+                x.CreateMap<Course, CourseDto>();
+            });
 
-            Mapper.Initialize(x => x.CreateMap<Course, CourseDto>());
 
             context = new CollegeDbContext();
         }
@@ -99,7 +101,9 @@ namespace College.Management.Entites
 
         public List<CourseDto> GetAllCourses()
         {
-            var courses = context.Courses.Select(x => Mapper.Map<CourseDto>(x)).ToList();
+            var cs = context.Courses.ToList();
+
+            var courses = cs.Select(x => Mapper.Map<CourseDto>(x)).ToList();
 
             var subjects = context.Subjects;
 
